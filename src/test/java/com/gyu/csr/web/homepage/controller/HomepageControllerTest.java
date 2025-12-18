@@ -1,11 +1,12 @@
 package com.gyu.csr.web.homepage.controller;
 
-import com.gyu.csr.web.config.PasswordConfig;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
@@ -14,9 +15,19 @@ class HomepageControllerTest {
     PasswordEncoder encoder;
 
     @Test
-    void encode() {
+    void passwordEncode() {
+        // value
+        String rawPassword = "1234";
+        String encodedPassword = encoder.encode(rawPassword);
 
-        System.out.println(encoder.encode("1234"));
+        // 원문과 다르다 (암호화 됐는지)
+        assertNotEquals(rawPassword, encodedPassword);
+
+        // BCrypt 포맷이다
+        assertTrue(encodedPassword.startsWith("$2"));
+
+        // 검증
+        assertTrue(encoder.matches(rawPassword, encodedPassword));
     }
 
 }
