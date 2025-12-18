@@ -1,55 +1,7 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    display:flex;
-    flex-direction:column
-}
-
-.header {
-    background-color: rgba(38, 41, 56, 0.8);
-    min-width: 1100px;
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.menu a {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.info a {
-    margin: 20px;
-    color: white;
-    text-decoration: none;
-    font-size: 1em;
-}
-
-/* BODY */
-.content {
-    flex:1
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 60px;
-    padding: 20px;
-    text-align: center;
-    font-size: 11px;
-    color: #777;
-    background-color: rgba(38, 41, 56, 0.8);
-}
+/*
+ * import 담당
+ *
+ */
+@import url("variables.css");
+@import url("layout.css");
+@import url("components.css");

@@ -1,0 +1,23 @@
+/*
+ * color, font, spacing 정의
+ *
+ */
+
+:root {
+    --color-bg-header: rgba(38, 41, 56, 0.8);
+    --color-bg-footer: rgba(38, 41, 56, 0.8);
+    --color-tx-header: rgba(250, 250, 250, 0.8);
+    --color-tx-footer: rgba(119, 119, 119, 1);
+    --color-bg-login: linear-gradient(
+            135deg,
+            rgba(38, 41, 56, 0.8),
+            rgba(181, 141, 182, 0.8)
+    );
+    --color-bg-login-card: linear-gradient(
+            135deg,
+            rgba(245, 243, 246, 0.8),
+            rgba(224, 196, 225, 0.8)
+    );
+    --color-bg-login-input: rgba(38, 41, 56, 0.8);
+    --color-tx-login-input: rgba(250, 250, 250, 0.8);
+}

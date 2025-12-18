@@ -1,75 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout}">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CSR</title>
+    <link rel="stylesheet" th:href="@{/common/css/style.css}">
+    <link rel="stylesheet" th:href="@{/common/css/login.css}">
+</head>
 
-<body>
-    <section layout:fragment="content">
-        <form th:action="@{/login}" method="post">
-            <input type="email" name="username" placeholder="email" required />
-            <input type="password" name="password" placeholder="password" required />
+<body class="login-page">
+<div class="login-card">
+    <div class="avatar">
+        <span>👤</span>
+    </div>
 
-            <select name="lang">
-                <option value="ko">한국어</option>
-                <option value="en">English</option>
-            </select>
+    <form th:action="@{/login}" method="post">
+        <div class="input-group">
+            <span class="icon">📧</span>
+            <input type="email" name="username" placeholder="Email" required>
+        </div>
 
-            <button type="submit">Login</button>
-        </form>
-    </section>
+        <div class="input-group">
+            <span class="icon">🔒</span>
+            <input type="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="options">
+            <label>
+                <input type="checkbox" name="remember-me">
+                Remember me
+            </label>
+            <a href="#">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="login-btn">LOGIN</button>
+    </form>
+</div>
 </body>
 </html>
-
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org" lang="ko">-->
-
-<!--<body>-->
-<!--<div class="card">-->
-<!--    <h2 th:text="#{login.title}">로그인</h2>-->
-
-<!--    <form th:action="@{/login}" method="post">-->
-<!--        <div class="form-group">-->
-<!--            <label for="loginId" th:text="#{login.label.id}">Login ID</label>-->
-<!--            <input id="loginId" name="loginId" type="text" required autofocus />-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="password" th:text="#{login.label.password}">Password</label>-->
-<!--            <input id="password" name="password" type="password" required />-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <label for="lang" th:text="#{login.label.lang}">Language</label>-->
-<!--            &lt;!&ndash; 언어 선택 시 페이지를 ?lang=xx 로 새로 로드하여 SessionLocaleResolver에 값 저장되도록 함 &ndash;&gt;-->
-<!--            <select id="lang" name="lang" onchange="onLangChange(this)">-->
-<!--                <option value="ko" th:text="#{lang.kr}" th:selected="${#locale.language == 'ko'}">한국어</option>-->
-<!--                <option value="en" th:text="#{lang.en}" th:selected="${#locale.language == 'en'}">English</option>-->
-<!--            </select>-->
-<!--        </div>-->
-
-<!--        <input type="hidden" id="hiddenLang" name="lang" value="" />-->
-<!--        <button type="submit" th:text="#{login.button}">로그인</button>-->
-<!--    </form>-->
-
-<!--    <div class="lang">-->
-<!--        &lt;!&ndash; lang 파라미터로만 변경되게 하려면 아래 링크도 사용 가능 &ndash;&gt;-->
-<!--        <a th:href="@{/login(lang='ko')}" th:text="#{lang.kr}">한국어</a> |-->
-<!--        <a th:href="@{/login(lang='en')}" th:text="#{lang.en}">English</a>-->
-<!--    </div>-->
-<!--</div>-->
-
-<!--<script>-->
-<!--    function onLangChange(sel) {-->
-<!--        // 선택 변경 시 현재 페이지에 ?lang=xx 파라미터로 이동해서 LocaleChangeInterceptor가 세션에 언어를 저장하게 함-->
-<!--        const lang = sel.value;-->
-<!--        const params = new URLSearchParams(window.location.search);-->
-<!--        params.set('lang', lang);-->
-<!--        // 현재 페이지 재로딩 (GET) — 세션에 언어가 설정된 후 폼 사용 가능-->
-<!--        window.location.search = params.toString();-->
-<!--    }-->
-<!--</script>-->
-<!--</body>-->
-<!--</html>-->
