@@ -1,0 +1,25 @@
+spring:
+  port: 8080
+  application:
+    name: csr
+  messages:
+    encoding: UTF-8
+#  datasource:
+#    url:
+#    username: admin
+#    password: admin_1311
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      minimum-idle: 1
+#      maximum-pool-size: 10
+#      idle-timeout: 30000
+#logging:
+#  level:
+#    root: debug
+#    org:
+#      springframework: error
+#    com:
+#      hikari: error
+#      gyu.csr.web.comm.json: debug
+#      gyu.csr.web.homepage.mapper: debug
+

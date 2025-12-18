@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSR</title>
+    <link rel="stylesheet" th:href="@{/common/css/style.css}">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="menu">
+        <a th:href="@{/}">MySite</a>
+        <a th:href="@{/company}"> 고객 </a>
+        <a th:href="@{/task}"> 업무 </a>
+    </div>
+    <nav class="info">
+        <a th:href="@{/sms}">SMS</a>
+        <a th:href="@{/contact}">Contact</a>
+        <!-- 로그아웃 추가 -->
+    </nav>
+</header>
+
+<!-- BODY -->
+<main class="content" layout:fragment="content">
+    <!-- 각 페이지 내용이 여기에 들어감 -->
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    © 2025 MySite
+</footer>
+
+</body>
+</html>
