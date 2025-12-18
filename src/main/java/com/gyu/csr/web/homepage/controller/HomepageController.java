@@ -26,6 +26,10 @@ public class HomepageController {
         model.addAttribute("message", "Spring Boot + Thymeleaf 웹사이트 구조 예제");
         return "web/home";
     }
+    @GetMapping("/login")
+    public String loginPage() {
+        return "web/login";
+    }
 
     @GetMapping("/change-settings")
     public String changeSettings(
