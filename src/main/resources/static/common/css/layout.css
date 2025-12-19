@@ -2,56 +2,103 @@ html, body {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-}
-
-body {
-    display:flex;
-    flex-direction:column
-}
-
-.header {
-    background-color: var(--color-bg-header);
     min-width: 1100px;
-    text-align: center;
+}
+.app-layout {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    padding-left: 50px;
-    padding-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    flex-shrink: 0;
+    height: 100vh;
+    background-color: var(--color-bg-main);
 }
-
-.menu a {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
-    color: var(--color-tx-header);
-    text-decoration: none;
-    font-size: 1em;
-}
-
-.info a {
-    margin: 20px;
-    color: var(--color-tx-header);
-    text-decoration: none;
-    font-size: 1em;
-}
-
-/* BODY */
-.content {
-    flex:1;
-    overflow-y: auto;
-    padding: 16px;
-}
-
-/* FOOTER */
-.footer {
+.sidebar {
+    width: 240px;
+    background: var(--color-bg-content);
+    color: var(--color-tx-content);
     padding: 20px;
-    text-align: center;
-    font-size: 11px;
-    color: var(--color-tx-footer);
-    background-color:  var(--color-bg-footer);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar .logo {
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.sidebar-menu {
+    flex: 1;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 12px 10px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    color: var(--color-tx-content);
+    text-decoration: none;
+}
+
+
+.sidebar-menu a:hover {
+    background: var(--color-bg-main);
+}
+
+.sidebar-user {
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.user-info {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    min-width: 74%;
+    min-height: 100%;
+    gap: 10px;
+}
+
+.user-info:hover {
+    background: var(--color-bg-main);
+}
+
+.sidebar-user .avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg-content);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-user .name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.sidebar-user .role {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.logout-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-tx-content);
+    font-size: 22px;
+    cursor: pointer;
+    min-width: 16%;
+    min-height: 80%;
+}
+
+.logout-btn:hover {
+    opacity: 1;
+    background: var(--color-bg-main);
 }

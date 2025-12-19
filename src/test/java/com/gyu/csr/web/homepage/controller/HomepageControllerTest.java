@@ -19,6 +19,7 @@ class HomepageControllerTest {
         // value
         String rawPassword = "1234";
         String encodedPassword = encoder.encode(rawPassword);
+        System.out.println(encodedPassword);
 
         // 원문과 다르다 (암호화 됐는지)
         assertNotEquals(rawPassword, encodedPassword);

@@ -1,12 +1,16 @@
 package com.gyu.csr.web.homepage.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_zz_user")
 public class TbZzUser {
@@ -21,14 +25,16 @@ public class TbZzUser {
     private String password;
 
     @Column(nullable = false)
-    private String departmentName;
+    private String department;
+
+    @Column
+    private String connectEmail;
+
+    @Column
+    private String connectPhone;
 
     @Column(columnDefinition = "boolean default false")
     private boolean enabled;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department_id")
-    private TbZzDepartmentDtl tbZzDepartmentDtl;
 
     @Enumerated(EnumType.STRING)
     private TbZzUserRole tbZzUserRole;

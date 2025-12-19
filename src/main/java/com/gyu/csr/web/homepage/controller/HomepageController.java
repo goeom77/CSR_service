@@ -8,6 +8,7 @@ import org.springframework.context.i18n.SimpleLocaleContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -29,6 +30,11 @@ public class HomepageController {
     @GetMapping("/login")
     public String loginPage() {
         return "web/login";
+    }
+    @PostMapping("/login/error/clear")
+    public String clearLoginError(HttpSession session) {
+        session.removeAttribute("loginError");
+        return "redirect:/login";
     }
 
     @GetMapping("/change-settings")

@@ -114,9 +114,6 @@ body.login-page {
     border: none;
     border-radius: 10px;
 
-    background: var(--color-bg-header);
-    color: var(--color-tx-header);
-
     font-size: 15px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -127,4 +124,38 @@ body.login-page {
 
 .login-btn:hover {
     background: #1c3d6e;
+}
+
+/* 모달 배경 */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+/* 에러 모달 */
+.modal {
+    background: #0b1e36;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    min-width: 300px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.modal button {
+    margin-top: 20px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #1c3d6e;
+    color: white;
+    cursor: pointer;
 }

@@ -34,6 +34,21 @@
 
         <button type="submit" class="login-btn">LOGIN</button>
     </form>
+    <!-- 에러 모달 -->
+    <div class="modal-overlay" th:if="${param.error}">
+        <div class="modal">
+            <p>아이디 또는 비밀번호가 올바르지 않습니다.</p>
+            <button onclick="closeModal()">확인</button>
+        </div>
+    </div>
 </div>
 </body>
+
+<script>
+    /* 모달 닫으면 세션 제거 */
+    closeModal = () => {
+        fetch('/login/error/clear', { method: 'POST' });
+        document.querySelector('.modal-overlay').remove();
+    }
+</script>
 </html>

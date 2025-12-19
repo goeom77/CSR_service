@@ -9,30 +9,47 @@
 </head>
 
 <body>
+    <div class="app-layout">
 
-<!-- HEADER -->
-<header class="header">
-    <div class="menu">
-        <a th:href="@{/}">MySite</a>
-        <a th:href="@{/company}"> 고객 </a>
-        <a th:href="@{/task}"> 업무 </a>
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <!-- LOGO -->
+            <h2 class="logo">LN.CMS</h2>
+
+            <!-- SIDEBAR MENU -->
+            <nav class="sidebar-menu">
+                <a href="#">대시보드</a>
+                <a href="#">운영</a>
+                <a href="#">시스템</a>
+            </nav>
+
+            <!-- SIDEBAR FOOTER -->
+            <div class="sidebar-user">
+                <div class="user-info">
+                    <div class="avatar">👤</div>
+                    <div class="text">
+                        <div class="name">
+                            홍길동
+                        </div>
+                        <div class="role">관리자</div>
+                    </div>
+                </div>
+
+                <form th:action="@{/logout}" method="post">
+                    <button class="logout-btn" type="submit" title="로그아웃">
+                        ⎋
+                    </button>
+                </form>
+            </div>
+        </aside>
+
+        <!-- MAIN -->
+        <div class="main">
+            <main class="content">
+                <!-- thymeleaf fragment -->
+                <section layout:fragment="content"></section>
+            </main>
+        </div>
+
     </div>
-    <nav class="info">
-        <a th:href="@{/sms}">SMS</a>
-        <a th:href="@{/contact}">Contact</a>
-        <!-- 로그아웃 추가 -->
-    </nav>
-</header>
-
-<!-- BODY -->
-<main class="content" layout:fragment="content">
-    <!-- 각 페이지 내용이 여기에 들어감 -->
-</main>
-
-<!-- FOOTER -->
-<footer class="footer">
-    © 2025 MySite
-</footer>
-
 </body>
-</html>
