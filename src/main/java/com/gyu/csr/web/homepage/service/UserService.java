@@ -17,6 +17,7 @@ public class UserService {
         TbZzUser user = TbZzUser.builder()
                 .email(request.email())
                 .password(passwordEncoder.encode(request.password()))
+                .name(request.name())
                 .connectEmail(request.connectEmail())
                 .connectPhone(request.connectPhone())
                 .department(request.department())
