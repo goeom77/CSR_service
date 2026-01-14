@@ -24,7 +24,7 @@ public class TbZzUser {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
+    @Column
     private String department;
 
     @Column
