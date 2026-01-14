@@ -12,6 +12,7 @@ public record CreateUserRequest(
         String email,
         @NotNull
         String password,
+        String name,
         String connectEmail,
         String connectPhone,
         String department,

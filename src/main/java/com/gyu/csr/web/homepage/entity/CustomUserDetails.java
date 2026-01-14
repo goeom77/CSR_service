@@ -18,7 +18,6 @@ public class CustomUserDetails implements UserDetails {
                 new SimpleGrantedAuthority(userDetailTbZzUser.getTbZzUserRole().name())
         );
     }
-
     @Override
     public @Nullable String getPassword() {
         return userDetailTbZzUser.getPassword();

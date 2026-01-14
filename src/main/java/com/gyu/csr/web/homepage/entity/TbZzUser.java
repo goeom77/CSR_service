@@ -25,6 +25,9 @@ public class TbZzUser {
     private String password;
 
     @Column
+    private String name;
+
+    @Column
     private String department;
 
     @Column
