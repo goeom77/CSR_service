@@ -1,16 +1,20 @@
-spring:
+server:
   port: 8080
+
+spring:
   application:
     name: csr
   thymeleaf:
     cache: false
   messages:
     encoding: UTF-8
+
   datasource:
     url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
-    password: sa@123
+    password:
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -20,25 +24,7 @@ spring:
     console:
       enabled: true
       path: /h2-console
+
 logging:
   level:
     org.springframework.security: DEBUG
-#  datasource:
-#    url:
-#    username: admin
-#    password: admin_1311
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    hikari:
-#      minimum-idle: 1
-#      maximum-pool-size: 10
-#      idle-timeout: 30000
-#logging:
-#  level:
-#    root: debug
-#    org:
-#      springframework: error
-#    com:
-#      hikari: error
-#      gyu.csr.web.comm.json: debug
-#      gyu.csr.web.homepage.mapper: debug
-
