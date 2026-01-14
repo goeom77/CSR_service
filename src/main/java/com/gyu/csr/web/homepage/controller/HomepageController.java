@@ -1,5 +1,7 @@
 package com.gyu.csr.web.homepage.controller;
 
+import com.gyu.csr.web.homepage.service.UserService;
+import com.gyu.csr.web.homepage.vo.request.CreateUserRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -7,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.SimpleLocaleContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +21,7 @@ import java.util.Locale;
 @Controller
 @RequiredArgsConstructor
 public class HomepageController {
+    private final UserService userService;
 
     private final LocaleResolver sessionLocaleResolver;
 
@@ -34,6 +38,18 @@ public class HomepageController {
     @PostMapping("/login/error/clear")
     public String clearLoginError(HttpSession session) {
         session.removeAttribute("loginError");
+        return "redirect:/login";
+    }
+
+    @PostMapping("/signup")
+    public String signup(
+            CreateUserRequest request,
+            BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            return "redirect:/login?singupError";
+        }
+        userService.createUser(request);
         return "redirect:/login";
     }
 

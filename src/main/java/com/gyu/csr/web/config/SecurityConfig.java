@@ -20,6 +20,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/favicon.ico",
                                 "/login/**",
+                                "/signup/**",
                                 "/common/**",
                                 "/h2-console/**" // db test 버전 용
                         ).permitAll()

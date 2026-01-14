@@ -8,43 +8,84 @@
 </head>
 
 <body class="login-page">
-<div class="login-card">
-    <div class="avatar">
-        <span>👤</span>
+    <div class="login-card">
+        <div class="avatar">
+            <span>👤</span>
+        </div>
+        <form id="loginForm" th:action="@{/login}" method="post">
+            <div class="input-group">
+                <span class="icon">📧</span>
+                <input type="email" name="username" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" name="remember-me">
+                    Remember me
+                </label>
+                <a href="#">Forgot Password?</a>
+            </div>
+            <p class="switch-text">
+                계정이 없으신가요?
+                <a href="#" onclick="showSignup()">회원가입</a>
+            </p>
+            <button type="submit" class="login-btn">LOGIN</button>
+        </form>
+        <form id="signupForm" th:action="@{/signup}" method="post" style="display:none;">
+
+            <div class="input-group">
+                <span class="icon">📧</span>
+                <input type="email" name="email" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <span class="icon">🔒</span>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- 임시 ROLE 고정 -->
+            <input type="hidden" name="userRole" value="ROLE_USER">
+
+            <!-- 선택값은 hidden 처리 -->
+            <input type="hidden" name="connectEmail" value="">
+            <input type="hidden" name="connectPhone" value="">
+            <input type="hidden" name="department" value="">
+
+            <button type="submit" class="login-btn">SIGN UP</button>
+
+            <p class="switch-text">
+                이미 계정이 있으신가요?
+                <a href="#" onclick="showLogin()">로그인</a>
+            </p>
+        </form>
+
+        <!-- 에러 모달 -->
+        <div class="modal-overlay" th:if="${param.error}">
+            <div class="modal">
+                <p>아이디 또는 비밀번호가 올바르지 않습니다.</p>
+                <button onclick="closeModal()">확인</button>
+            </div>
+        </div>
     </div>
-
-    <form th:action="@{/login}" method="post">
-        <div class="input-group">
-            <span class="icon">📧</span>
-            <input type="email" name="username" placeholder="Email" required>
-        </div>
-
-        <div class="input-group">
-            <span class="icon">🔒</span>
-            <input type="password" name="password" placeholder="Password" required>
-        </div>
-
-        <div class="options">
-            <label>
-                <input type="checkbox" name="remember-me">
-                Remember me
-            </label>
-            <a href="#">Forgot Password?</a>
-        </div>
-
-        <button type="submit" class="login-btn">LOGIN</button>
-    </form>
-    <!-- 에러 모달 -->
-    <div class="modal-overlay" th:if="${param.error}">
-        <div class="modal">
-            <p>아이디 또는 비밀번호가 올바르지 않습니다.</p>
-            <button onclick="closeModal()">확인</button>
-        </div>
-    </div>
-</div>
 </body>
 
 <script>
+    const showSignup = () => {
+        document.getElementById('loginForm').style.display = 'none';
+        document.getElementById('signupForm').style.display = 'block';
+        document.getElementById('avatar-icon').textContent = '📝';
+    }
+
+    const showLogin = () => {
+        document.getElementById('signupForm').style.display = 'none';
+        document.getElementById('loginForm').style.display = 'block';
+        document.getElementById('avatar-icon').textContent = '👤';
+    }
     /* 모달 닫으면 세션 제거 */
     closeModal = () => {
         fetch('/login/error/clear', { method: 'POST' });
