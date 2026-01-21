@@ -1,5 +1,6 @@
 package com.gyu.csr.web.homepage.controller;
 
+import com.gyu.csr.web.homepage.entity.CustomUserDetails;
 import com.gyu.csr.web.homepage.service.UserService;
 import com.gyu.csr.web.homepage.vo.request.CreateUserRequest;
 import jakarta.servlet.http.HttpServletRequest;
@@ -7,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.i18n.SimpleLocaleContext;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +28,11 @@ public class HomepageController {
     private final LocaleResolver sessionLocaleResolver;
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(
+            @AuthenticationPrincipal CustomUserDetails userDetails,
+            Model model
+    ) {
+        model.addAttribute("loginUser", userDetails.getUser());
         model.addAttribute("title", "메인 페이지");
         model.addAttribute("message", "Spring Boot + Thymeleaf 웹사이트 구조 예제");
         return "web/home";

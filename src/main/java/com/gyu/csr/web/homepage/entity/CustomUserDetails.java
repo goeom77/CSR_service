@@ -11,21 +11,26 @@ import java.util.List;
 
 @RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
-    private final TbZzUser userDetailTbZzUser;
+    private final TbZzUser user;
+
+    public TbZzUser getUser() {
+        return user;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(
-                new SimpleGrantedAuthority(userDetailTbZzUser.getTbZzUserRole().name())
+                new SimpleGrantedAuthority(user.getTbZzUserRole().name())
         );
     }
     @Override
     public @Nullable String getPassword() {
-        return userDetailTbZzUser.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return userDetailTbZzUser.getEmail();
+        return user.getEmail();
     }
     @Override
     public boolean isAccountNonExpired() {
@@ -44,6 +49,6 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return userDetailTbZzUser.isEnabled();
+        return user.isEnabled();
     }
 }

@@ -28,10 +28,13 @@
                 <div class="user-info">
                     <div class="avatar">👤</div>
                     <div class="text">
-                        <div class="name">
-                            홍길동
+                        <div class="name"
+                             th:text="${loginUser.name != null ? loginUser.name : '게스트'}">
                         </div>
-                        <div class="role">관리자</div>
+
+                        <div class="role"
+                             th:text="${loginUser != null ? loginUser.tbZzUserRole : '게스트'}">
+                        </div>
                     </div>
                 </div>
 

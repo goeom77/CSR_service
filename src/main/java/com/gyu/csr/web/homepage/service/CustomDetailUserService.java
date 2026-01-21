@@ -1,5 +1,6 @@
 package com.gyu.csr.web.homepage.service;
 
+import com.gyu.csr.web.homepage.entity.CustomUserDetails;
 import com.gyu.csr.web.homepage.entity.TbZzUser;
 import com.gyu.csr.web.homepage.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,15 +24,6 @@ public class CustomDetailUserService implements UserDetailsService {
             throws UsernameNotFoundException {
         TbZzUser tbZzUser = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException(email));
-
-
-        return User.builder()
-                .username(tbZzUser.getEmail())
-                .password(tbZzUser.getPassword())
-                .authorities(
-                        List.of(new SimpleGrantedAuthority(tbZzUser.getTbZzUserRole().name()))
-                )
-                .disabled(!tbZzUser.isEnabled())
-                .build();
+        return new CustomUserDetails(tbZzUser);
     }
 }
